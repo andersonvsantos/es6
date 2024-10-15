@@ -25,11 +25,10 @@ const alunos = [
     }
 ]
 
-const alunosAprovados = alunos.reduce((acumulador, estudante) => {
-    if(estudante.nota >= 6) {
-        acumulador += `${estudante.nome} `
-    }
-    return acumulador;
-}, '');
+function filtrarAlunos(alunos) {
+    return alunos.nota >= 6
+}
 
-console.log(`Os alunos aprovados são ${alunosAprovados}`);
+const alunosAprovados = alunos.filter(filtrarAlunos);
+
+console.log(`Os alunos aprovados são ${alunosAprovados.map(aluno => aluno.nome).join(', ')}.`);
